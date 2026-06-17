@@ -1,5 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import { BookMarked, Home, PlusCircle, Heart } from "lucide-react";
+import {
+  BookMarked,
+  Home,
+  PlusCircle,
+  Heart,
+} from "lucide-react";
 import { cn } from "@/utils/cn";
 import ThemePanel from "../ui/ThemePanel";
 import Search from "../ui/Search";
@@ -30,10 +35,7 @@ export default function Header() {
               <BookMarked className='h-5 w-5 text-white' />
             </div>
             <span className='hidden lg:block text-xl font-bold tracking-tight text-foreground'>
-              Personal{" "}
-              <span className='text-primary-600 dark:text-primary-400'>
-                Book Manager
-              </span>
+              Personal <span className='text-primary-600 dark:text-primary-400'>Book Manager</span>
             </span>
           </Link>
 
@@ -81,17 +83,17 @@ export default function Header() {
         </div>
 
         {/* Right Side: Auth & Theme */}
-        <div className='flex items-center gap-3'>
+        <div className="flex items-center gap-3">
           {/* Auth Button */}
           <button
             onClick={isAuthenticated ? logout : login}
-            className='rounded-xl px-5 py-2 text-sm font-semibold text-foreground bg-muted hover:bg-muted/80 border border-border shadow-sm transition-all duration-200 active:scale-95 cursor-pointer'
+            className="rounded-xl px-5 py-2 text-sm font-semibold text-foreground bg-muted hover:bg-muted/80 border border-border shadow-sm transition-all duration-200 active:scale-95"
           >
             {isAuthenticated ? "Logout" : "Login"}
           </button>
 
           {/* Theme Panel */}
-          <div className='flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface shadow-sm'>
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface shadow-sm">
             <ThemePanel />
           </div>
         </div>

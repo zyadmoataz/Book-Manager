@@ -1,4 +1,4 @@
-import { useBooks } from "@/api/quires/getBook.query";
+import { useBooks } from "@/api/queries/getBook.query";
 import { Book } from "@/types";
 import { FilterIcon } from "lucide-react";
 import { useEffect, useReducer, useState } from "react";
@@ -67,22 +67,22 @@ function Filter() {
     <div className='relative'>
       <button
         onClick={() => setShowFilters(!showFilters)}
-        className='flex items-center justify-center rounded-lg border border-slate-300 p-2.5 text-slate-700 hover:bg-slate-100 transition-colors'
+        className='flex items-center justify-center rounded-lg border border-border p-2.5 text-muted-foreground hover:bg-muted transition-colors'
       >
         <FilterIcon size={18} />
       </button>
 
       {showFilters && (
-        <div className='absolute right-0 top-12 z-50 w-64 rounded-xl border border-slate-200 bg-white p-5 shadow-xl'>
+        <div className='absolute right-0 top-12 z-50 w-64 rounded-xl border border-border bg-surface p-5 shadow-xl'>
           <div className='mb-5'>
-            <h3 className='mb-3 text-sm font-semibold text-slate-900'>
+            <h3 className='mb-3 text-sm font-semibold text-foreground'>
               Read Status
             </h3>
             <div className='flex flex-col gap-2.5'>
-              <label className='flex items-center gap-2 cursor-pointer text-sm text-slate-700'>
+              <label className='flex items-center gap-2 cursor-pointer text-sm text-foreground'>
                 <input
                   type='radio'
-                  className='text-primary-600 focus:ring-primary-600 cursor-pointer'
+                  className='text-primary-600 focus:ring-primary-600 cursor-pointer bg-background border-border'
                   checked={state.read === "all"}
                   onChange={() =>
                     dispatch({ type: "SET_READ", payload: "all" })
@@ -90,10 +90,10 @@ function Filter() {
                 />
                 All Books
               </label>
-              <label className='flex items-center gap-2 cursor-pointer text-sm text-slate-700'>
+              <label className='flex items-center gap-2 cursor-pointer text-sm text-foreground'>
                 <input
                   type='radio'
-                  className='text-primary-600 focus:ring-primary-600 cursor-pointer'
+                  className='text-primary-600 focus:ring-primary-600 cursor-pointer bg-background border-border'
                   checked={state.read === "read"}
                   onChange={() =>
                     dispatch({ type: "SET_READ", payload: "read" })
@@ -101,10 +101,10 @@ function Filter() {
                 />
                 Read
               </label>
-              <label className='flex items-center gap-2 cursor-pointer text-sm text-slate-700'>
+              <label className='flex items-center gap-2 cursor-pointer text-sm text-foreground'>
                 <input
                   type='radio'
-                  className='text-primary-600 focus:ring-primary-600 cursor-pointer'
+                  className='text-primary-600 focus:ring-primary-600 cursor-pointer bg-background border-border'
                   checked={state.read === "unread"}
                   onChange={() =>
                     dispatch({ type: "SET_READ", payload: "unread" })
@@ -116,13 +116,13 @@ function Filter() {
           </div>
 
           <div>
-            <h3 className='mb-3 text-sm font-semibold text-slate-900'>Genre</h3>
+            <h3 className='mb-3 text-sm font-semibold text-foreground'>Genre</h3>
             <select
               value={state.genre}
               onChange={(e) =>
                 dispatch({ type: "SET_GENRE", payload: e.target.value })
               }
-              className='w-full cursor-pointer rounded-lg border border-slate-300 bg-slate-50 p-2.5 text-sm outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500'
+              className='w-full cursor-pointer rounded-lg border border-border bg-background p-2.5 text-sm text-foreground outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500'
             >
               {genres.map((g) => (
                 <option key={g as string} value={g as string}>
@@ -137,7 +137,7 @@ function Filter() {
 
           <button
             onClick={() => dispatch({ type: "RESET" })}
-            className='mt-6 w-full rounded-lg bg-slate-100 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-200 transition-colors'
+            className='mt-6 w-full rounded-lg bg-muted py-2.5 text-sm font-semibold text-foreground hover:opacity-80 transition-opacity'
           >
             Clear Filters
           </button>

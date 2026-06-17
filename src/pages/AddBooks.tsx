@@ -1,9 +1,8 @@
-import PageLayout from "@/components/layout/PageLayout";
 import { BookPlus, Plus, Trash2 } from "lucide-react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useAddBook } from "@/api/quires/postBook.query";
+import { useAddBook } from "@/api/queries/createBook.mutation";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "@/api/apiClient";
 import { useState } from "react";
@@ -88,28 +87,28 @@ export default function AddBooks() {
   };
 
   return (
-    <PageLayout>
+    <>
       <div className='mx-auto max-w-3xl'>
         <div className='mb-8'>
-          <h1 className='text-3xl font-bold tracking-tight text-slate-900 dark:text-white'>
+          <h1 className='text-3xl font-bold tracking-tight text-foreground'>
             Add a New Book
           </h1>
-          <p className='mt-2 text-slate-600 dark:text-slate-400'>
+          <p className='mt-2 text-muted-foreground'>
             Expand your library by adding a new book to your collection.
           </p>
         </div>
 
-        <div className='overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm transition-colors duration-300'>
-          <div className='border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/50 p-6 sm:p-8'>
+        <div className='overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-colors duration-300'>
+          <div className='border-b border-border bg-muted/50 p-6 sm:p-8'>
             <div className='flex items-center gap-3'>
               <div className='flex h-10 w-10 items-center justify-center rounded-lg bg-primary-100 text-primary-600 dark:bg-primary-900/50 dark:text-primary-400'>
                 <BookPlus className='h-5 w-5' />
               </div>
               <div>
-                <h2 className='text-lg font-semibold text-slate-900 dark:text-white'>
+                <h2 className='text-lg font-semibold text-foreground'>
                   Book Information
                 </h2>
-                <p className='text-sm text-slate-500 dark:text-slate-400'>
+                <p className='text-sm text-muted-foreground'>
                   Please provide the details below.
                 </p>
               </div>
@@ -122,7 +121,7 @@ export default function AddBooks() {
               <div className='sm:col-span-2'>
                 <label
                   htmlFor='title'
-                  className='block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200'
+                  className='block text-sm font-medium leading-6 text-foreground'
                 >
                   Book Title
                 </label>
@@ -136,7 +135,7 @@ export default function AddBooks() {
                     type='text'
                     id='title'
                     placeholder='e.g. The Pragmatic Programmer'
-                    className='block w-full rounded-xl border-0 py-2.5 px-3.5 text-slate-900 dark:text-white dark:bg-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 dark:ring-slate-700 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6'
+                    className='block w-full rounded-xl border-0 py-2.5 px-3.5 text-foreground bg-surface shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6'
                   />
                   {errors.title && (
                     <p className='mt-2 text-sm text-red-500'>
@@ -153,7 +152,7 @@ export default function AddBooks() {
               <div>
                 <label
                   htmlFor='author'
-                  className='block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200'
+                  className='block text-sm font-medium leading-6 text-foreground'
                 >
                   Author
                 </label>
@@ -163,7 +162,7 @@ export default function AddBooks() {
                     type='text'
                     id='author'
                     placeholder='e.g. Andy Hunt'
-                    className='block w-full rounded-xl border-0 py-2.5 px-3.5 text-slate-900 dark:text-white dark:bg-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 dark:ring-slate-700 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6'
+                    className='block w-full rounded-xl border-0 py-2.5 px-3.5 text-foreground bg-surface shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6'
                   />
                   {errors.author && (
                     <p className='mt-2 text-sm text-red-500'>
@@ -177,7 +176,7 @@ export default function AddBooks() {
               <div>
                 <label
                   htmlFor='genre'
-                  className='block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200'
+                  className='block text-sm font-medium leading-6 text-foreground'
                 >
                   Genre
                 </label>
@@ -185,7 +184,7 @@ export default function AddBooks() {
                   <select
                     {...register("genre")}
                     id='genre'
-                    className='block w-full rounded-xl border-0 py-2.5 px-3.5 text-slate-900 dark:text-white dark:bg-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 dark:ring-slate-700 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6'
+                    className='block w-full rounded-xl border-0 py-2.5 px-3.5 text-foreground bg-surface shadow-sm ring-1 ring-inset ring-border focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6'
                   >
                     <option value=''>Select a genre</option>
                     <option value='tech'>Technology</option>
@@ -206,7 +205,7 @@ export default function AddBooks() {
               <div>
                 <label
                   htmlFor='year'
-                  className='block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200'
+                  className='block text-sm font-medium leading-6 text-foreground'
                 >
                   Publication Year
                 </label>
@@ -216,7 +215,7 @@ export default function AddBooks() {
                     type='number'
                     id='year'
                     placeholder='e.g. 1999'
-                    className='block w-full rounded-xl border-0 py-2.5 px-3.5 text-slate-900 dark:text-white dark:bg-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 dark:ring-slate-700 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6'
+                    className='block w-full rounded-xl border-0 py-2.5 px-3.5 text-foreground bg-surface shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6'
                   />
                   {errors.year && (
                     <p className='mt-2 text-sm text-red-500'>
@@ -230,7 +229,7 @@ export default function AddBooks() {
               <div>
                 <label
                   htmlFor='cover'
-                  className='block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200'
+                  className='block text-sm font-medium leading-6 text-foreground'
                 >
                   Cover Image URL (Optional)
                 </label>
@@ -240,7 +239,7 @@ export default function AddBooks() {
                     type='url'
                     id='cover'
                     placeholder='https://...'
-                    className='block w-full rounded-xl border-0 py-2.5 px-3.5 text-slate-900 dark:text-white dark:bg-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 dark:ring-slate-700 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6'
+                    className='block w-full rounded-xl border-0 py-2.5 px-3.5 text-foreground bg-surface shadow-sm ring-1 ring-inset ring-border placeholder:text-muted-foreground focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6'
                   />
                   {errors.cover && (
                     <p className='mt-2 text-sm text-red-500'>
@@ -251,9 +250,9 @@ export default function AddBooks() {
               </div>
 
               {/* Tags Field Array */}
-              <div className='sm:col-span-2 mt-4 border-t border-slate-200 dark:border-slate-700 pt-6'>
+              <div className='sm:col-span-2 mt-4 border-t border-border pt-6'>
                 <div className='flex items-center justify-between mb-4'>
-                  <label className='block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200'>
+                  <label className='block text-sm font-medium leading-6 text-foreground'>
                     Book Tags
                   </label>
                   <button
@@ -271,12 +270,12 @@ export default function AddBooks() {
                       <input
                         {...register(`tags.${index}.name`)}
                         placeholder='e.g. Programming'
-                        className='block w-full rounded-xl border-0 py-2 pl-3 pr-10 text-slate-900 dark:text-white dark:bg-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 dark:ring-slate-700 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm'
+                        className='block w-full rounded-xl border-0 py-2 pl-3 pr-10 text-foreground bg-surface shadow-sm ring-1 ring-inset ring-border focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm'
                       />
                       <button
                         type='button'
                         onClick={() => remove(index)}
-                        className='absolute right-2 text-slate-400 hover:text-red-500 transition-colors'
+                        className='absolute right-2 text-muted-foreground hover:text-red-500 transition-colors'
                       >
                         <Trash2 className='h-4 w-4' />
                       </button>
@@ -291,27 +290,27 @@ export default function AddBooks() {
               </div>
 
               {/* Read Status */}
-              <div className='sm:col-span-2 flex items-center gap-3 rounded-xl border border-slate-200 dark:border-slate-700 p-4 bg-slate-50 dark:bg-slate-800/50'>
+              <div className='sm:col-span-2 flex items-center gap-3 rounded-xl border border-border p-4 bg-muted/50'>
                 <input
                   {...register("read")}
                   type='checkbox'
                   id='read'
-                  className='h-5 w-5 rounded border-slate-300 text-primary-600 focus:ring-primary-600'
+                  className='h-5 w-5 rounded border-border text-primary-600 focus:ring-primary-600 bg-surface'
                 />
                 <label
                   htmlFor='read'
-                  className='text-sm font-medium text-slate-900 dark:text-slate-200'
+                  className='text-sm font-medium text-foreground'
                 >
                   I have already read this book
                 </label>
               </div>
             </div>
 
-            <div className='mt-8 flex items-center justify-end gap-x-4 border-t border-slate-200 dark:border-slate-800 pt-6'>
+            <div className='mt-8 flex items-center justify-end gap-x-4 border-t border-border pt-6'>
               <button
                 type='button'
                 onClick={() => navigate("/")}
-                className='text-sm font-semibold leading-6 text-slate-900 dark:text-slate-300 hover:text-slate-700'
+                className='text-sm font-semibold leading-6 text-foreground hover:opacity-80'
               >
                 Cancel
               </button>
@@ -328,6 +327,6 @@ export default function AddBooks() {
           </form>
         </div>
       </div>
-    </PageLayout>
+    </>
   );
 }

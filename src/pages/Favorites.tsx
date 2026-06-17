@@ -1,8 +1,7 @@
-import PageLayout from "@/components/layout/PageLayout";
 import { HeartCrack } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useFavorites } from "@/hooks/useFavorites";
-import { useBooks } from "@/api/quires/getBook.query";
+import { useFavorites } from "@/providers/FavoritesProvider";
+import { useBooks } from "@/api/queries/getBook.query";
 import BookCard from "@/components/ui/BookCard";
 import { Book } from "@/types";
 
@@ -15,12 +14,12 @@ function Favorites() {
   const hasFavorites = favoriteBooks.length > 0;
 
   return (
-    <PageLayout>
+    <>
       <div className='mb-8'>
-        <h1 className='text-3xl font-bold tracking-tight text-slate-900'>
+        <h1 className='text-3xl font-bold tracking-tight text-foreground'>
           Your Favorites
         </h1>
-        <p className='mt-2 text-slate-600'>
+        <p className='mt-2 text-muted-foreground'>
           The books that hold a special place on your shelf.
         </p>
       </div>
@@ -30,14 +29,14 @@ function Favorites() {
           <div className='h-8 w-8 animate-spin rounded-full border-4 border-primary-200 border-t-primary-600'></div>
         </div>
       ) : !hasFavorites ? (
-        <div className='flex flex-col items-center justify-center rounded-3xl border border-dashed border-slate-300 bg-white/50 px-6 py-20 text-center'>
-          <div className='mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-slate-100'>
-            <HeartCrack className='h-10 w-10 text-slate-400' />
+        <div className='flex flex-col items-center justify-center rounded-3xl border border-dashed border-border bg-surface/50 px-6 py-20 text-center'>
+          <div className='mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-muted'>
+            <HeartCrack className='h-10 w-10 opacity-70 text-foreground' />
           </div>
-          <h2 className='mb-2 text-xl font-bold text-slate-900'>
+          <h2 className='mb-2 text-xl font-bold text-foreground'>
             No favorites yet
           </h2>
-          <p className='mb-8 max-w-sm text-slate-500'>
+          <p className='mb-8 max-w-sm text-muted-foreground'>
             You haven't added any books to your favorites list. Explore your
             library and save the ones you love!
           </p>
@@ -55,7 +54,7 @@ function Favorites() {
           ))}
         </div>
       )}
-    </PageLayout>
+    </>
   );
 }
 

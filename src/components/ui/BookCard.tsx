@@ -1,7 +1,7 @@
 import { Book } from "@/types";
 import { BookOpen, Calendar, User, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useFavorites } from "@/hooks/useFavorites";
+import { useFavorites } from "@/providers/FavoritesProvider";
 
 export default function BookCard({ book }: { book: Book }) {
   const { toggleFavorite, isFavorite } = useFavorites();
@@ -11,10 +11,10 @@ export default function BookCard({ book }: { book: Book }) {
   return (
     <div
       key={book.id}
-      className='group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary-500/10'
+      className='group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary-500/10'
     >
       {/* Cover Image */}
-      <div className='aspect-[3/4] w-full overflow-hidden bg-slate-100 relative'>
+      <div className='aspect-[3/4] w-full overflow-hidden bg-muted relative'>
         <img
           src={
             book.cover ||
@@ -39,7 +39,7 @@ export default function BookCard({ book }: { book: Book }) {
             className={`flex h-8 w-8 items-center justify-center rounded-full backdrop-blur-md transition-all cursor-pointer z-50 ${
               favorite
                 ? "bg-red-500 text-white"
-                : "bg-white/70 text-slate-600 hover:bg-white"
+                : "bg-surface/70 text-muted-foreground hover:bg-surface hover:text-foreground"
             }`}
           >
             <Heart className={`h-4 w-4 ${favorite ? "fill-current" : ""}`} />
@@ -53,24 +53,24 @@ export default function BookCard({ book }: { book: Book }) {
           <span>{book.genre || "Uncategorized"}</span>
         </div>
 
-        <h3 className='mb-1 text-lg font-bold leading-tight text-slate-900 line-clamp-2'>
+        <h3 className='mb-1 text-lg font-bold leading-tight text-foreground line-clamp-2'>
           {book.title}
         </h3>
 
-        <div className='mt-auto pt-4 flex flex-col gap-2 text-sm text-slate-500'>
+        <div className='mt-auto pt-4 flex flex-col gap-2 text-sm text-muted-foreground'>
           <div className='flex items-center gap-2'>
-            <User className='h-4 w-4 text-slate-400' />
+            <User className='h-4 w-4 opacity-70' />
             <span className='truncate'>{book.author}</span>
           </div>
           <div className='flex items-center gap-2'>
-            <Calendar className='h-4 w-4 text-slate-400' />
+            <Calendar className='h-4 w-4 opacity-70' />
             <span>{book.year}</span>
           </div>
         </div>
 
         <Link
           to={`/books/${book.id}`}
-          className='mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-200 transition-all hover:bg-primary-50 hover:text-primary-700 hover:ring-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2'
+          className='mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-background px-4 py-2.5 text-sm font-semibold text-foreground ring-1 ring-inset ring-border transition-all hover:bg-primary-50 hover:text-primary-700 hover:ring-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2'
         >
           <BookOpen className='h-4 w-4' />
           View Details

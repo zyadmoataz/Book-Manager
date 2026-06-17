@@ -1,5 +1,4 @@
-import { useBooks } from "@/api/quires/getBook.query";
-import PageLayout from "@/components/layout/PageLayout";
+import { useBooks } from "@/api/queries/getBook.query";
 import BookCard from "@/components/ui/BookCard";
 import { Book } from "@/types";
 import { Link, useSearchParams } from "react-router-dom";
@@ -30,38 +29,34 @@ function BooksList() {
 
   if (data?.length === 0) {
     return (
-      <PageLayout>
-        <div className='flex h-64 flex-col items-center justify-center gap-4'>
-          <span>No books found, You can add some books!</span>
-          <Link
-            className='text-primary-600 font-medium underline'
-            to='/add-book'
-          >
-            Add Book
-          </Link>
-        </div>
-      </PageLayout>
+      <div className='flex h-64 flex-col items-center justify-center gap-4 text-foreground'>
+        <span>No books found, You can add some books!</span>
+        <Link
+          className='text-primary-600 font-medium underline'
+          to='/add-book'
+        >
+          Add Book
+        </Link>
+      </div>
     );
   }
 
   if (error) {
     return (
-      <PageLayout>
-        <div className='flex h-64 items-center justify-center'>
-          Error: {error.message}
-        </div>
-      </PageLayout>
+      <div className='flex h-64 items-center justify-center text-foreground'>
+        Error: {error.message}
+      </div>
     );
   }
 
   return (
-    <PageLayout>
+    <>
       <div className='mb-8 flex items-center justify-between'>
         <div>
-          <h1 className='text-3xl font-bold tracking-tight text-slate-900'>
+          <h1 className='text-3xl font-bold tracking-tight text-foreground'>
             Your Library
           </h1>
-          <p className='mt-2 text-slate-600'>
+          <p className='mt-2 text-muted-foreground'>
             Browse and manage your personal book collection.
           </p>
         </div>
@@ -74,7 +69,7 @@ function BooksList() {
       ) : (
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
           {filteredData?.length === 0 ? (
-            <div className="col-span-full py-12 text-center text-slate-500">
+            <div className="col-span-full py-12 text-center text-muted-foreground">
               No books found matching "{searchQuery}"
             </div>
           ) : (
@@ -84,7 +79,7 @@ function BooksList() {
           )}
         </div>
       )}
-    </PageLayout>
+    </>
   );
 }
 

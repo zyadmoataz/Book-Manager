@@ -1,5 +1,5 @@
 import { createContext, useContext, ReactNode } from "react";
-import { useLocalStorage } from "./useLocalStorage";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 interface AuthContextValue {
   isAuthenticated: boolean;

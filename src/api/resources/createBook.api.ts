@@ -1,7 +1,7 @@
 import axiosInstance from "@/api/apiClient";
 import { Book } from "@/types";
 
-export const postBooks = async (data: Book) => {
+export const createBook = async (data: Book) => {
   const response = await axiosInstance.post("/books", data);
   return response.data;
 };

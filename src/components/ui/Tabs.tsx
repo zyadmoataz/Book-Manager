@@ -37,7 +37,7 @@ function TabsList({
   return (
     <div
       className={cn(
-        "inline-flex h-10 items-center justify-center rounded-xl bg-slate-100 p-1 text-slate-500",
+        "inline-flex h-10 items-center justify-center rounded-xl bg-muted p-1 text-muted-foreground",
         className,
       )}
     >
@@ -67,8 +67,8 @@ function TabsTrigger({
       className={cn(
         "inline-flex items-center justify-center whitespace-nowrap rounded-lg px-4 py-1.5 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500",
         isActive
-          ? "bg-white text-slate-900 shadow-sm"
-          : "hover:bg-slate-200 hover:text-slate-900",
+          ? "bg-surface text-foreground shadow-sm"
+          : "hover:bg-surface/50 hover:text-foreground",
         className,
       )}
     >

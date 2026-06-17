@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { useLocalStorage } from "./useLocalStorage";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 interface FavoritesContextValue {
   favorites: number[];
@@ -22,9 +22,9 @@ export const FavoritesProvider = ({
   );
 
   const toggleFavorite = (id: number) =>
-    setFavorites((prev) =>
+    setFavorites((prev: number[]) =>
       // if prev includes id return prev filtered without id else return prev with id added to it
-      prev.includes(id) ? prev.filter((favId) => favId !== id) : [...prev, id],
+      prev.includes(id) ? prev.filter((favId: number) => favId !== id) : [...prev, id],
     );
 
   const isFavorite = (id: number) => favorites.includes(id);

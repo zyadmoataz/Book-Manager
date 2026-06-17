@@ -1,12 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { postBooks } from "../resources/postBooks.api";
+import { createBook } from "../resources/createBook.api";
 
 export const useAddBook = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: postBooks,
-    onSuccess: (data) => {
+    mutationFn: createBook,
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["books"] });
     },
   });

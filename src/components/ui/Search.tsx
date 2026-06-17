@@ -29,10 +29,10 @@ function Search() {
   return (
     <div>
       <div className='relative'>
-        <SearchIcon className='absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 ' />
+        <SearchIcon className='absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground ' />
         <input
           ref={inputRef}
-          className='w-full rounded-lg border border-slate-300 p-2.5 pl-9 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500'
+          className='w-full rounded-lg border border-border bg-surface text-foreground placeholder:text-muted-foreground p-2.5 pl-9 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500'
           type='text'
           placeholder='Search books...'
           value={search}

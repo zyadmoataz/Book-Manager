@@ -85,7 +85,7 @@ export default function Header() {
           {/* Auth Button */}
           <button
             onClick={isAuthenticated ? logout : login}
-            className='rounded-xl px-5 py-2 text-sm font-semibold text-foreground bg-muted hover:bg-muted/80 border border-border shadow-sm transition-all duration-200 active:scale-95 cursor-pointer'
+            className='rounded-xl px-5 py-2 text-sm font-semibold text-foreground bg-muted hover:bg-muted/80 border border-border shadow-sm transition-all duration-200 active:scale-95'
           >
             {isAuthenticated ? "Logout" : "Login"}
           </button>

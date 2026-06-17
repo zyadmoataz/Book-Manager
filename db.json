@@ -6,7 +6,7 @@
       "author": "Hunt & Thomas",
       "year": 1999,
       "genre": "tech",
-      "read": false,
+      "read": true,
       "cover": "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=800&q=80",
       "overview": "The Pragmatic Programmer cuts through the increasing specialization and technicalities of modern software development to examine the core process--taking a requirement and producing working, maintainable code that delights its users.",
       "reviews": [
