@@ -2,7 +2,6 @@ import PageLayout from "@/components/layout/PageLayout";
 import { useBookById } from "@/api/quires/getBook.query";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, BookOpen, Calendar, User, Star } from "lucide-react";
-import { Tabs } from "@/components/ui/Tabs";
 
 function BooksDetails() {
   const { id } = useParams();
@@ -78,37 +77,19 @@ function BooksDetails() {
                 </div>
               </div>
 
-              <div className="mb-8 max-w-none">
-                <Tabs defaultValue="overview">
-                  <Tabs.List className="mb-4">
-                    <Tabs.Trigger value="overview">Overview</Tabs.Trigger>
-                    <Tabs.Trigger value="reviews">Reviews</Tabs.Trigger>
-                  </Tabs.List>
-                  
-                  <Tabs.Content value="overview">
-                    <div className="prose prose-slate text-slate-600">
-                      <p>
-                        {data.overview || "No overview available for this book."}
-                      </p>
-                    </div>
-                  </Tabs.Content>
-                  
-                  <Tabs.Content value="reviews">
-                    {data.reviews && data.reviews.length > 0 ? (
-                      <div className="space-y-4">
-                        {data.reviews.map((review: string, idx: number) => (
-                          <div key={idx} className="rounded-xl bg-slate-50 p-4 border border-slate-100">
-                            <p className="text-slate-600 italic">"{review}"</p>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-6 text-center text-slate-500">
-                        No reviews yet. Be the first to review this book!
-                      </div>
-                    )}
-                  </Tabs.Content>
-                </Tabs>
+              <div className='prose prose-slate mb-8 max-w-none text-slate-600'>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <p>
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                  occaecat cupidatat non proident, sunt in culpa qui officia
+                  deserunt mollit anim id est laborum.
+                </p>
               </div>
 
               <div className='mt-auto grid gap-4 sm:grid-cols-2'>

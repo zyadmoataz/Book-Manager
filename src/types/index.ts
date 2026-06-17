@@ -6,4 +6,6 @@ export interface Book {
   genre: string;
   read: boolean;
   cover: string;
+  overview?: string;
+  reviews?: string[];
 }

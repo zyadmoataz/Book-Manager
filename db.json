@@ -7,7 +7,12 @@
       "year": 1999,
       "genre": "tech",
       "read": true,
-      "cover": "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=800&q=80"
+      "cover": "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=800&q=80",
+      "overview": "The Pragmatic Programmer cuts through the increasing specialization and technicalities of modern software development to examine the core process--taking a requirement and producing working, maintainable code that delights its users.",
+      "reviews": [
+        "A must read for every software developer.",
+        "Changed the way I think about coding."
+      ]
     },
     {
       "id": 2,
@@ -16,7 +21,12 @@
       "year": 1965,
       "genre": "sci-fi",
       "read": false,
-      "cover": "https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80"
+      "cover": "https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80",
+      "overview": "Set on the desert planet Arrakis, Dune is the story of the boy Paul Atreides, heir to a noble family tasked with ruling an inhospitable world where the only thing of value is the 'spice' melange.",
+      "reviews": [
+        "The greatest science fiction novel ever written.",
+        "World-building at its absolute finest."
+      ]
     },
     {
       "id": 3,
@@ -25,7 +35,12 @@
       "year": 2018,
       "genre": "self-help",
       "read": false,
-      "cover": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=800&q=80"
+      "cover": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=800&q=80",
+      "overview": "No matter your goals, Atomic Habits offers a proven framework for improving--every day. James Clear reveals practical strategies that will teach you exactly how to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results.",
+      "reviews": [
+        "Incredibly practical and easy to apply.",
+        "A game changer for personal productivity."
+      ]
     }
   ]
 }
