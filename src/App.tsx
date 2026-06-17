@@ -3,6 +3,7 @@ import BooksList from "./pages/BooksList";
 import AddBooks from "./pages/AddBooks";
 import Favorites from "./pages/Favorites";
 import { lazy, Suspense } from "react";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 const BooksDetails = lazy(() => import("./pages/BooksDetails"));
 
@@ -21,7 +22,14 @@ function App() {
           }
         />
         <Route path='/add-book' element={<AddBooks />} />
-        <Route path='/favorites' element={<Favorites />} />
+        <Route 
+          path='/favorites' 
+          element={
+            <ProtectedRoute>
+              <Favorites />
+            </ProtectedRoute>
+          } 
+        />
       </Routes>
     </BrowserRouter>
   );

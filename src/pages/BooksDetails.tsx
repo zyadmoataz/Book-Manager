@@ -3,10 +3,16 @@ import { useBookById } from "@/api/quires/getBook.query";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, BookOpen, Calendar, User, Star } from "lucide-react";
 import { Tabs } from "@/components/ui/Tabs";
+import { useFavorites } from "@/hooks/useFavorites";
+import { useToggleReadMutation } from "@/api/quires/updateBook.mutation";
 
 function BooksDetails() {
   const { id } = useParams();
   const { data, isLoading } = useBookById(Number(id));
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const toggleReadMutation = useToggleReadMutation();
+  
+  const favorite = data ? isFavorite(Number(data.id)) : false;
 
   return (
     <PageLayout>
@@ -78,6 +84,16 @@ function BooksDetails() {
                 </div>
               </div>
 
+              {data.tags && data.tags.length > 0 && (
+                <div className="mb-8 flex flex-wrap gap-2">
+                  {data.tags.map((tag: any) => (
+                    <span key={tag.id} className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-800 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300">
+                      #{tag.name}
+                    </span>
+                  ))}
+                </div>
+              )}
+
               <div className="mb-8 max-w-none">
                 <Tabs defaultValue="overview">
                   <Tabs.List className="mb-4">
@@ -112,12 +128,23 @@ function BooksDetails() {
               </div>
 
               <div className='mt-auto grid gap-4 sm:grid-cols-2'>
-                <button className='flex items-center justify-center gap-2 rounded-xl bg-primary-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 active:scale-95'>
-                  <Star className='h-4 w-4' />
-                  Add to Favorites
+                <button 
+                  onClick={() => toggleFavorite(Number(data.id))}
+                  className={`flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 active:scale-95 ${
+                    favorite 
+                      ? "bg-slate-800 hover:bg-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600" 
+                      : "bg-primary-600 hover:bg-primary-500"
+                  }`}
+                >
+                  <Star className={`h-4 w-4 ${favorite ? "fill-current text-yellow-400" : ""}`} />
+                  {favorite ? "Remove from Favorites" : "Add to Favorites"}
                 </button>
-                <button className='flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 transition-all hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 active:scale-95'>
-                  {data.read ? "Mark as Unread" : "Mark as Read"}
+                <button 
+                  onClick={() => toggleReadMutation.mutate({ id: Number(data.id), read: !data.read })}
+                  disabled={toggleReadMutation.isPending}
+                  className='flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 transition-all hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 active:scale-95 dark:bg-slate-800 dark:text-slate-100 dark:ring-slate-700 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed'
+                >
+                  {toggleReadMutation.isPending ? "Updating..." : data.read ? "Mark as Unread" : "Mark as Read"}
                 </button>
               </div>
             </div>

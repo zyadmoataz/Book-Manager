@@ -5,8 +5,7 @@ import { useFavorites } from "@/hooks/useFavorites";
 
 export default function BookCard({ book }: { book: Book }) {
   const { toggleFavorite, isFavorite } = useFavorites();
-
-  const favorite = isFavorite(book.id); // check if book is in favorites
+  const favorite = isFavorite(book.id);
 
   return (
     <div

@@ -12,16 +12,6 @@
       "reviews": [
         "A must read for every software developer.",
         "Changed the way I think about coding."
-      ],
-      "tags": [
-        {
-          "id": "1",
-          "name": "programming"
-        },
-        {
-          "id": "2",
-          "name": "software engineering"
-        }
       ]
     },
     {
@@ -36,16 +26,6 @@
       "reviews": [
         "The greatest science fiction novel ever written.",
         "World-building at its absolute finest."
-      ],
-      "tags": [
-        {
-          "id": "1",
-          "name": "sci-fi"
-        },
-        {
-          "id": "2",
-          "name": "adventure"
-        }
       ]
     },
     {
@@ -60,16 +40,6 @@
       "reviews": [
         "Incredibly practical and easy to apply.",
         "A game changer for personal productivity."
-      ],
-      "tags": [
-        {
-          "id": "1",
-          "name": "self-help"
-        },
-        {
-          "id": "2",
-          "name": "productivity"
-        }
       ]
     }
   ]

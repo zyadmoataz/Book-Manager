@@ -8,4 +8,5 @@ export interface Book {
   cover: string;
   overview?: string;
   reviews?: string[];
+  tags?: { id: string; name: string }[];
 }

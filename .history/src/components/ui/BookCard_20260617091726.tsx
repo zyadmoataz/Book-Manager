@@ -5,8 +5,7 @@ import { useFavorites } from "@/hooks/useFavorites";
 
 export default function BookCard({ book }: { book: Book }) {
   const { toggleFavorite, isFavorite } = useFavorites();
-
-  const favorite = isFavorite(book.id); // check if book is in favorites
+  const favorite = isFavorite(book.id);
 
   return (
     <div
@@ -34,12 +33,11 @@ export default function BookCard({ book }: { book: Book }) {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
+              console.log("Toggling favorite for ID:", book.id);
               toggleFavorite(Number(book.id));
             }}
             className={`flex h-8 w-8 items-center justify-center rounded-full backdrop-blur-md transition-all cursor-pointer z-50 ${
-              favorite
-                ? "bg-red-500 text-white"
-                : "bg-white/70 text-slate-600 hover:bg-white"
+              favorite ? "bg-red-500 text-white" : "bg-white/70 text-slate-600 hover:bg-white"
             }`}
           >
             <Heart className={`h-4 w-4 ${favorite ? "fill-current" : ""}`} />
