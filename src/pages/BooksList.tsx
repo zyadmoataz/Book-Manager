@@ -8,11 +8,25 @@ function BooksList() {
   const { data, isLoading, error } = useBooks();
   const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get("searchQuery")?.toLowerCase() || "";
+  const readFilter = searchParams.get("read") || "all";
+  const genreFilter = searchParams.get("genre") || "all";
 
-  const filteredData = data?.filter((book: Book) => 
-    book.title.toLowerCase().includes(searchQuery) || 
-    book.author.toLowerCase().includes(searchQuery)
-  );
+  const filteredData = data?.filter((book: Book) => {
+    // 1. Text Search
+    const matchesSearch = book.title.toLowerCase().includes(searchQuery) || 
+                          book.author.toLowerCase().includes(searchQuery);
+    
+    // 2. Read Status Filter
+    const matchesRead = readFilter === "all" || 
+                       (readFilter === "read" && book.read) || 
+                       (readFilter === "unread" && !book.read);
+                       
+    // 3. Genre Filter
+    const matchesGenre = genreFilter === "all" || book.genre === genreFilter;
+
+    // Must pass ALL filters to be displayed
+    return matchesSearch && matchesRead && matchesGenre;
+  });
 
   if (data?.length === 0) {
     return (

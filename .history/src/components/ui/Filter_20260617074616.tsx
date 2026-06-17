@@ -1,0 +1,24 @@
+import { useBooks } from "@/api/quires/getBook.query";
+import { Book } from "@/types";
+import { FilterIcon } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
+
+//Add a filter (e.g. by genre or read/unread) held in state.
+function Filter() {
+  const { data } = useBooks();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const filter = searchParams.get("filter")?.toLowerCase() || ""; // "all", "read", "unread"
+
+  return (
+    <div>
+      <div className='flex gap-2'>
+        <button>
+          <FilterIcon />
+          Filter
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default Filter;
